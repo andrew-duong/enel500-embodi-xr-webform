@@ -1,5 +1,4 @@
-﻿// Token loaded from config.local.js or manual entry
-let TOKEN = window.GITHUB_TOKEN || "";
+﻿let TOKEN = window.GITHUB_TOKEN || "";
 
 if (!TOKEN) {
   TOKEN = prompt("Enter GitHub token:");
@@ -9,7 +8,7 @@ const OWNER = "andrew-duong";
 const REPO = "enel500-embodi-xr-webform";
 const BRANCH = "main";
 
-document.getElementById("uploadBtn").onclick = upload;
+document.getElementById("configForm").onsubmit = submitForm;
 
 async function getNextID() {
   const res = await fetch(
@@ -30,24 +29,29 @@ async function getNextID() {
   return Math.max(...numbers) + 1;
 }
 
-async function upload() {
-  const file = document.getElementById("fileInput").files[0];
+async function submitForm(e) {
+  e.preventDefault();
+
   const status = document.getElementById("status");
   const result = document.getElementById("result");
 
-  if (!file) {
-    status.innerText = "Select a JSON file.";
-    return;
-  }
+  // build JSON from form
+  const data = {
+    name: document.getElementById("name").value,
+    speed: parseInt(document.getElementById("speed").value),
+    difficulty: document.getElementById("difficulty").value,
+    enableSound: document.getElementById("enableSound").checked
+  };
+
+  const jsonString = JSON.stringify(data, null, 2);
 
   status.innerText = "Generating ID...";
   const id = await getNextID();
   const path = `data/${id}.json`;
 
-  status.innerText = `Uploading as ${id}.json...`;
+  status.innerText = "Uploading...";
 
-  const text = await file.text();
-  const content = btoa(unescape(encodeURIComponent(text)));
+  const content = btoa(unescape(encodeURIComponent(jsonString)));
 
   try {
     const res = await fetch(
@@ -59,7 +63,7 @@ async function upload() {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          message: `Upload ${id}.json`,
+          message: `Create config ${id}`,
           content: content,
           branch: BRANCH
         })
@@ -67,13 +71,15 @@ async function upload() {
     );
 
     if (res.ok) {
-      status.innerText = "✅ Upload successful!";
-      result.innerText = `File ID: ${id}`;
+      status.innerText = "✅ Submitted!";
+      result.innerText = `Your ID: ${id}`;
+      document.getElementById("configForm").reset();
     } else {
       const err = await res.text();
       status.innerText = "Upload failed";
       result.innerText = err;
     }
+
   } catch (err) {
     status.innerText = "Error:";
     result.innerText = err;
