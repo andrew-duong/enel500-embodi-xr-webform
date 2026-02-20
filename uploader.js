@@ -35,12 +35,31 @@ async function submitForm(e) {
   const status = document.getElementById("status");
   const result = document.getElementById("result");
 
-  // build JSON from form
+  const customText = document
+    .getElementById("customPhrases").value
+    .split("\n")
+    .map(p => p.trim())
+    .filter(p => p.length > 0);
+
   const data = {
-    name: document.getElementById("name").value,
-    speed: parseInt(document.getElementById("speed").value),
-    difficulty: document.getElementById("difficulty").value,
-    enableSound: document.getElementById("enableSound").checked
+    volume: {
+      master: +masterVolume.value,
+      music: +musicVolume.value,
+      voice: +voiceVolume.value,
+      sfx: +sfxVolume.value
+    },
+    userPreferences: {
+      name: userName.value,
+      theme: theme.value
+    },
+    shadowCustomization: {
+      appearance: appearance.value,
+      voice: shadowVoice.value
+    },
+    phrases: {
+      preset: presetPhrase.value,
+      custom: customText
+    }
   };
 
   const jsonString = JSON.stringify(data, null, 2);
@@ -49,7 +68,7 @@ async function submitForm(e) {
   const id = await getNextID();
   const path = `data/${id}.json`;
 
-  status.innerText = "Uploading...";
+  status.innerText = "Uploading settings...";
 
   const content = btoa(unescape(encodeURIComponent(jsonString)));
 
@@ -63,7 +82,7 @@ async function submitForm(e) {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          message: `Create config ${id}`,
+          message: `Settings ${id}`,
           content: content,
           branch: BRANCH
         })
@@ -71,9 +90,9 @@ async function submitForm(e) {
     );
 
     if (res.ok) {
-      status.innerText = "✅ Submitted!";
-      result.innerText = `Your ID: ${id}`;
-      document.getElementById("configForm").reset();
+      status.innerText = "✅ Settings saved!";
+      result.innerText = `Settings ID: ${id}`;
+      configForm.reset();
     } else {
       const err = await res.text();
       status.innerText = "Upload failed";

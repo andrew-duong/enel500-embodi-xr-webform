@@ -2,31 +2,75 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>XR Config Form</title>
+<title>XR Settings Form</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="container">
-  <h1>Create Config</h1>
+  <h1>XR Settings</h1>
 
   <form id="configForm">
-    <input type="text" id="name" placeholder="Participant Name" required>
 
-    <input type="number" id="speed" placeholder="Speed (1-10)" required>
+    <h2>Volume</h2>
 
-    <select id="difficulty">
-      <option value="Easy">Easy</option>
-      <option value="Medium">Medium</option>
-      <option value="Hard">Hard</option>
+    <label>Master Volume: <span id="mvVal">50</span></label>
+    <input type="range" id="masterVolume" min="1" max="100" value="50">
+
+    <label>Music: <span id="musicVal">50</span></label>
+    <input type="range" id="musicVolume" min="1" max="100" value="50">
+
+    <label>Voice: <span id="voiceVal">50</span></label>
+    <input type="range" id="voiceVolume" min="1" max="100" value="50">
+
+    <label>Sound Effects: <span id="sfxVal">50</span></label>
+    <input type="range" id="sfxVolume" min="1" max="100" value="50">
+
+
+    <h2>User Preferences</h2>
+
+    <input type="text" id="userName" placeholder="Your Name" required>
+
+    <select id="theme">
+      <option value="theme">Theme1</option>
+      <option value="Dark">Dark</option>
+      <option value="Neon">Neon</option>
     </select>
 
-    <label>
-      <input type="checkbox" id="enableSound">
-      Enable Sound
-    </label>
 
-    <button type="submit">Submit</button>
+    <h2>Shadow Customization</h2>
+
+    <label>Appearance</label>
+    <select id="appearance">
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+
+    <label>Voice</label>
+    <select id="shadowVoice">
+      <option value="Man1">Man1</option>
+      <option value="Man2">Man2</option>
+      <option value="Woman1">Woman1</option>
+      <option value="Woman2">Woman2</option>
+    </select>
+
+
+    <h2>Phrases</h2>
+
+    <label>Preset Phrase</label>
+    <select id="presetPhrase">
+      <option value="Welcome">Welcome</option>
+      <option value="Let's begin">Let's begin</option>
+      <option value="Follow me">Follow me</option>
+      <option value="Good job">Good job</option>
+    </select>
+
+    <label>Custom Phrases</label>
+    <textarea id="customPhrases"
+      placeholder="Enter custom phrases (one per line)"></textarea>
+
+    <button type="submit">Submit Settings</button>
+
   </form>
 
   <p id="status"></p>
@@ -35,5 +79,16 @@
 
 <script src="config.local.js"></script>
 <script src="uploader.js"></script>
+<script>
+function linkSlider(slider, label){
+  slider.oninput = () => label.textContent = slider.value;
+}
+
+linkSlider(masterVolume, mvVal);
+linkSlider(musicVolume, musicVal);
+linkSlider(voiceVolume, voiceVal);
+linkSlider(sfxVolume, sfxVal);
+</script>
+
 </body>
 </html>
