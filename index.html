@@ -2,50 +2,67 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>XR Settings Form</title>
+<title>Embodi-XR Settings Form</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="container">
-  <h1>XR Settings</h1>
+  <h1>Embodi-XR Settings Form</h1>
 
-  <form id="configForm">
+<form id="configForm">
 
-    <h2>Volume</h2>
+  <h2>Volume</h2>
 
+  <div class="form-row">
     <label>Master Volume: <span id="mvVal">50</span></label>
     <input type="range" id="masterVolume" min="1" max="100" value="50">
+  </div>
 
+  <div class="form-row">
     <label>Music: <span id="musicVal">50</span></label>
     <input type="range" id="musicVolume" min="1" max="100" value="50">
+  </div>
 
+  <div class="form-row">
     <label>Voice: <span id="voiceVal">50</span></label>
     <input type="range" id="voiceVolume" min="1" max="100" value="50">
+  </div>
 
+  <div class="form-row">
     <label>Sound Effects: <span id="sfxVal">50</span></label>
     <input type="range" id="sfxVolume" min="1" max="100" value="50">
+  </div>
 
 
-    <h2>User Preferences</h2>
+  <h2>User Preferences</h2>
 
+  <div class="form-row">
+    <label>Name</label>
     <input type="text" id="userName" placeholder="Your Name" required>
+  </div>
 
+  <div class="form-row">
+    <label>Theme</label>
     <select id="theme">
       <option value="theme">Theme1</option>
       <option value="Dark">Dark</option>
       <option value="Neon">Neon</option>
     </select>
+  </div>
 
 
-    <h2>Shadow Customization</h2>
+  <h2>Shadow Customization</h2>
 
+  <div class="form-row">
     <label>Appearance</label>
     <select id="appearance">
       <option value="Male">Male</option>
       <option value="Female">Female</option>
     </select>
+  </div>
 
+  <div class="form-row">
     <label>Voice</label>
     <select id="shadowVoice">
       <option value="Man1">Man1</option>
@@ -53,25 +70,36 @@
       <option value="Woman1">Woman1</option>
       <option value="Woman2">Woman2</option>
     </select>
+  </div>
 
 
-    <h2>Phrases</h2>
+  <h2>Phrases</h2>
 
+  <div class="form-row">
     <label>Preset Phrase</label>
     <select id="presetPhrase">
-      <option value="Welcome">Welcome</option>
-      <option value="Let's begin">Let's begin</option>
-      <option value="Follow me">Follow me</option>
-      <option value="Good job">Good job</option>
+        <option value="goodJob">Good job [name] on completing [task]</option>
+        <option value="wellDone">Well done [name]! You finished [task]</option>
+        <option value="greatWork">Great work [name]! Task complete</option>
+        <option value="niceEffort">Nice effort [name], you did it</option>
+        <option value="taskComplete">[task] completed successfully</option>
     </select>
+  </div>
 
-    <label>Custom Phrases</label>
-    <textarea id="customPhrases"
-      placeholder="Enter custom phrases (one per line)"></textarea>
+    <div class="form-row">
+      <label>Custom Phrase Templates</label>
+      <textarea id="customPhrases"
+        placeholder="Examples:
+    Great work [name]
+    You completed [task]
+    Nice job today"></textarea>
+    </div>
 
+  <div class="submit-row">
     <button type="submit">Submit Settings</button>
+  </div>
 
-  </form>
+</form>
 
   <p id="status"></p>
   <p id="result"></p>
