@@ -8,115 +8,72 @@
 <body>
 
 <div class="container">
-  <h1>Embodi-XR Settings Form</h1>
+    <h1>Embodi-XR Settings Form</h1>
 
-<form id="configForm">
+    <form id="configForm">
 
-  <h2>Volume</h2>
+        <h2>User Preferences</h2>
 
-  <div class="form-row">
-    <label>Master Volume: <span id="mvVal">50</span></label>
-    <input type="range" id="masterVolume" min="1" max="100" value="50">
-  </div>
+        <div class="form-row">
+            <label for="userName">Name</label>
+            <input type="text" id="userName" placeholder="Your Name" required>
+        </div>
 
-  <div class="form-row">
-    <label>Music: <span id="musicVal">50</span></label>
-    <input type="range" id="musicVolume" min="1" max="100" value="50">
-  </div>
+        <h2>Phrases (Optional)</h2>
+        <div class="form-help">
+            <strong>Placeholder Guide</strong>
+            <p>Use placeholders to automatically insert context-specific information.</p>
+            <ul>
+                <li><strong>[name]</strong>: the participant's name</li>
+                <li><strong>[task]</strong>: the current task the user is trying to complete</li>
+                <li><strong>[action]</strong>: any physical movement performed to complete the task</li>
+            </ul>
 
-  <div class="form-row">
-    <label>Voice: <span id="voiceVal">50</span></label>
-    <input type="range" id="voiceVolume" min="1" max="100" value="50">
-  </div>
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li><strong>Task:</strong> popping the bubble, stepping on the stone, reaching the target</li>
+                <li><strong>Action:</strong> taking a step, lifting your arm, moving your legs, reaching forward</li>
+            </ul>
+        </div>
 
-  <div class="form-row">
-    <label>Sound Effects: <span id="sfxVal">50</span></label>
-    <input type="range" id="sfxVolume" min="1" max="100" value="50">
-  </div>
+        <div class="form-row">
+            <label for="customOnStartPhrases">Custom On Start Phrase Templates</label>
+            <small>Enter one phrase per line.</small>
+            <textarea id="customOnStartPhrases" placeholder="Examples:
+Ready to begin, [name]? Let's start [task].
+The task is to [task], let's go!
+Time to begin [action]. You've got this, [name]!"></textarea>
+        </div>
 
+        <div class="form-row">
+            <label for="customOnSuccessPhrases">Custom On Task Completion Phrase Templates</label>
+            <small>Enter one phrase per line.</small>
+            <textarea id="customOnSuccessPhrases" placeholder="Examples:
+Great work on [action], [name]!
+Nice job finishing [action]!
+Good job using [action] to complete [task]!"></textarea>
+        </div>
 
-  <h2>User Preferences</h2>
+        <div class="form-row">
+            <label for="customOnFailurePhrases">Custom On Task Failure Phrase Templates</label>
+            <small>Enter one phrase per line.</small>
+            <textarea id="customOnFailurePhrases" placeholder="Examples:
+That was a tough one, [name]. Let's try [action] again.
+You didn't complete [task] this time, keep going!
+Almost there! Give [action] another try."></textarea>
+        </div>
 
-  <div class="form-row">
-    <label>Name</label>
-    <input type="text" id="userName" placeholder="Your Name" required>
-  </div>
+        <div class="submit-row">
+            <button type="submit">Submit Settings</button>
+        </div>
+    </form>
 
-  <div class="form-row">
-    <label>Theme</label>
-    <select id="theme">
-      <option value="theme">Theme1</option>
-      <option value="Dark">Dark</option>
-      <option value="Neon">Neon</option>
-    </select>
-  </div>
-
-
-  <h2>Shadow Customization</h2>
-
-  <div class="form-row">
-    <label>Appearance</label>
-    <select id="appearance">
-      <option value="Male">Male</option>
-      <option value="Female">Female</option>
-    </select>
-  </div>
-
-  <div class="form-row">
-    <label>Voice</label>
-    <select id="shadowVoice">
-      <option value="Man1">Man1</option>
-      <option value="Man2">Man2</option>
-      <option value="Woman1">Woman1</option>
-      <option value="Woman2">Woman2</option>
-    </select>
-  </div>
-
-
-  <h2>Phrases</h2>
-
-  <div class="form-row">
-    <label>Preset Phrase</label>
-    <select id="presetPhrase">
-        <option value="goodJob">Good job [name] on completing [task]</option>
-        <option value="wellDone">Well done [name]! You finished [task]</option>
-        <option value="greatWork">Great work [name]! Task complete</option>
-        <option value="niceEffort">Nice effort [name], you did it</option>
-        <option value="taskComplete">[task] completed successfully</option>
-    </select>
-  </div>
-
-    <div class="form-row">
-      <label>Custom Phrase Templates</label>
-      <textarea id="customPhrases"
-        placeholder="Examples:
-    Great work [name]
-    You completed [task]
-    Nice job today"></textarea>
-    </div>
-
-  <div class="submit-row">
-    <button type="submit">Submit Settings</button>
-  </div>
-
-</form>
-
-  <p id="status"></p>
-  <p id="result"></p>
+    <p id="status"></p>
+    <p id="result"></p>
 </div>
 
 <script src="config.local.js"></script>
 <script src="uploader.js"></script>
-<script>
-function linkSlider(slider, label){
-  slider.oninput = () => label.textContent = slider.value;
-}
-
-linkSlider(masterVolume, mvVal);
-linkSlider(musicVolume, musicVal);
-linkSlider(voiceVolume, voiceVal);
-linkSlider(sfxVolume, sfxVal);
-</script>
 
 </body>
 </html>
