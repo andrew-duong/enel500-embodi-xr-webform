@@ -1,0 +1,24 @@
+{
+  "volume": {
+    "master": 100,
+    "music": 5,
+    "voice": 100,
+    "sfx": 1
+  },
+  "userPreferences": {
+    "name": "a",
+    "theme": "theme"
+  },
+  "shadowCustomization": {
+    "appearance": "Female",
+    "voice": "Woman1"
+  },
+  "phrases": {
+    "preset": "goodJob",
+    "custom": [
+      "You're just the coolest person ever!!!",
+      "WOWWWWWWWW THAT WAS SICK",
+      "YAY YOU DID IT"
+    ]
+  }
+}

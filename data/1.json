@@ -1,0 +1,22 @@
+{
+  "volume": {
+    "master": 70,
+    "music": 60,
+    "voice": 20,
+    "sfx": 80
+  },
+  "userPreferences": {
+    "name": "Testing test",
+    "theme": "Dark"
+  },
+  "shadowCustomization": {
+    "appearance": "Male",
+    "voice": "Man2"
+  },
+  "phrases": {
+    "preset": "goodJob",
+    "custom": [
+      "test [name] test [task]"
+    ]
+  }
+}

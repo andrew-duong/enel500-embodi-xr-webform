@@ -1,0 +1,20 @@
+{
+  "volume": {
+    "master": 50,
+    "music": 50,
+    "voice": 50,
+    "sfx": 50
+  },
+  "userPreferences": {
+    "name": "TEST",
+    "theme": "theme"
+  },
+  "shadowCustomization": {
+    "appearance": "Male",
+    "voice": "Man1"
+  },
+  "phrases": {
+    "preset": "goodJob",
+    "custom": []
+  }
+}
