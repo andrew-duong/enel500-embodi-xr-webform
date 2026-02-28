@@ -1,0 +1,22 @@
+{
+  "userPreferences": {
+    "name": "Testy test"
+  },
+  "phrases": {
+    "onStart": [
+      "Test1",
+      "test2",
+      "test3"
+    ],
+    "onSuccess": [
+      "test 1a",
+      "test 2a",
+      "test 3a"
+    ],
+    "onFailure": [
+      "test 3b",
+      "test i",
+      "test c"
+    ]
+  }
+}
