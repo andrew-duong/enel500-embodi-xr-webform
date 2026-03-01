@@ -1,0 +1,10 @@
+{
+  "userPreferences": {
+    "name": "Liam TEST"
+  },
+  "phrases": {
+    "onStart": [],
+    "onSuccess": [],
+    "onFailure": []
+  }
+}
