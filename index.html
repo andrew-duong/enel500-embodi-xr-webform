@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Embodi-XR Settings Form</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Embodi-Buddy Settings Form</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
 <div class="container">
-    <h1>Embodi-XR Settings Form</h1>
+    <h1>Embodi-Buddy Settings Form</h1>
 
     <form id="configForm">
 
@@ -17,6 +18,17 @@
         <div class="form-row">
             <label for="userName">Name</label>
             <input type="text" id="userName" placeholder="Your Name" required>
+        </div>
+
+        <h2>Task Preferences</h2>
+
+        <div class="form-row">
+            <label for="taskPreferences">Task Preference</label>
+            <select id="taskPreferences">
+                <option value="all" selected>All</option>
+                <option value="bubble">Bubble Popping</option>
+                <option value="stepping_stone">Stepping Stones</option>
+            </select>
         </div>
 
         <h2>Phrases (Optional)</h2>

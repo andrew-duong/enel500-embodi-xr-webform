@@ -28,6 +28,12 @@ async function getNextID() {
   return Math.max(...numbers) + 1;
 }
 
+function getSelectedTasks() {
+  const select = document.getElementById("taskPreferences");
+
+  return Array.from(select.selectedOptions).map(option => option.value);
+}
+
 function parseLines(textareaId) {
   const value = document.getElementById(textareaId).value;
 
@@ -50,6 +56,10 @@ async function submitForm(e) {
   const data = {
     userPreferences: {
       name: userName.value
+    },
+
+    taskPreferences:{
+        tasks: getSelectedTasks()
     },
 
     phrases: {
